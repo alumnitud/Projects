@@ -175,7 +175,7 @@ CSV_AGENT_PROMPT_TEXT = """
 
 BING_PROMPT_TEXT = """
 
-## On your ability to gather and present information:
+On your ability to gather and present information:
 - **You must always** perform web searches when the user is seeking information (explicitly or implicitly), regardless of your internal knowledge or information.
 - **You Always** perform at least 2 and up to 5 searches in a single conversation turn before reaching the Final Answer. You should never search the same query more than once.
 - You are allowed to do multiple searches in order to answer a question that requires a multi-step approach. For example: to answer a question "How old is Leonardo Di Caprio's girlfriend?", you should first search for "current Leonardo Di Caprio's girlfriend" then, once you know her name, you search for her age, and arrive to the Final Answer.

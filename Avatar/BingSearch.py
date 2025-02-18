@@ -18,6 +18,8 @@ from IPython.display import Markdown, HTML, display
 def printmd(string):
     display(Markdown(string.replace("$","USD ")))
 
+
+
 from dotenv import load_dotenv
 load_dotenv("credentials.env")
 
@@ -34,7 +36,7 @@ llm = AzureChatOpenAI(deployment_name=os.environ["GPT4o_DEPLOYMENT_NAME"],
                       streaming=True)
 
 api_wrapper = BingSearchAPIWrapper(bing_subscription_key=os.getenv("BING_SUBSCRIPTION_KEY"))
-bing_tool = BingSearchResults(api_wrapper=BingSearchAPIWrapper(), 
+bing_tool = BingSearchResults(api_wrapper=api_wrapper, 
                               num_results=10,
                               name="Searcher",
                               description="useful to search the internet")
@@ -85,7 +87,7 @@ QUESTION = "I'm planning a vacation to Greece, tell me budget for a family of 4,
 async def stream_graph_updates_async(graph, user_input: str):
     inputs = {"messages": [("human", user_input)]}
     output = ""
-
+    printmd("prompt:" + BING_PROMPT_TEXT)
     async for event in graph.astream_events(inputs, version="v2"):
         if (event["event"] == "on_chat_model_stream"):
             # Print the content of the chunk progressively
