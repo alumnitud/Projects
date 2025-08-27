@@ -20,7 +20,7 @@ if st.button("End Session"):
         st.write("No active agent session to end.")
 
 # Example input box
-user_input = st.text_area("Describe your coding task:")
+user_input = st.text_area("Describe your task:")
 
 if st.button("Submit"):
     response = create_message_and_getreply(st.session_state.agent, st.session_state.thread, user_input)

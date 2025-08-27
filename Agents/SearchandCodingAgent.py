@@ -40,12 +40,13 @@ ai_search= AzureAISearchTool(
     top_k=3, # Return top 3 results
     filter="",
 )
+print(f"Created Azure AI Search tool")
 
 def create_agent_and_thread():
     # Create an agent with the Bing Grounding tool
     agent = project_client.agents.create_agent(
         model=os.environ["MODEL_DEPLOYMENT_NAME"],  # Model deployment name
-        name="simple-agent",  # Name of the agent
+        name="tool-agent",  # Name of the agent
         instructions="""
         You are an AI assistant with two capabilities:
 
