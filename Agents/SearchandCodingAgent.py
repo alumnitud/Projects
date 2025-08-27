@@ -99,6 +99,7 @@ def create_message_and_getreply(agent, thread, user_input):
 def delete_agent(agent):
     try:
         project_client.agents.delete_agent(agent.id)
+        print(f"Deleted agent with ID: {agent.id}")
         return True
     except Exception as e:
         print(f"Error deleting agent: {e}")
