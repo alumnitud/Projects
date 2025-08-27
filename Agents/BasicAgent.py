@@ -22,14 +22,18 @@ project_client = AIProjectClient(
     credential=DefaultAzureCredential(),  # Use Azure Default Credential for authentication
 )
 
-code_interpreter = CodeInterpreterTool()
+#code_interpreter = CodeInterpreterTool()
 with project_client:
     # Create an agent with the Bing Grounding tool
     agent = project_client.agents.create_agent(
         model=os.environ["MODEL_DEPLOYMENT_NAME"],  # Model deployment name
-        name="simple-agent",  # Name of the agent
-        instructions="You are a helpful agent",  # Instructions for the agent
-        tools=code_interpreter.definitions,  # Attach the tool
+        name="basic-agent",  # Name of the agent
+        instructions="You are a helpful agent, which helps answers questions in a friendly and informative manner. " \
+        "Be empathetic and think before answering the question and explain in an easy to understand manner. Keep practicality in mind. " \
+        "Keep responses concise, structured and user-friendly." \
+        "Do not answer any queries about sensitive topics like violence, hate, or self-harm." \
+        "If there is something that you do not know, say you don't know.",  # Instructions for the agent
+        #tools=code_interpreter.definitions,  # Attach the tool
     )
     print(f"Created agent, ID: {agent.id}")
 
@@ -41,7 +45,7 @@ with project_client:
     #Further addition: We can keep asking the user for input until they type 'exit'
     userinput= ""
     while userinput.lower() != "exit":
-        userinput = input("Enter your coding question (type 'exit' to quit): ")
+        userinput = input("Please enter your question (type 'exit' to quit): ")
         content= userinput  # Get user input for message content
 
         # Add a message to the thread
