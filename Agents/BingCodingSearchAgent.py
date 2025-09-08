@@ -50,7 +50,7 @@ print(f"Created Azure AI Search tool")
 # Create an agent with the Bing Grounding tool
 agent = project_client.agents.create_agent(
     model=os.environ["MODEL_DEPLOYMENT_NAME"],  # Model deployment name
-    name="tool-agent",  # Name of the agent
+    name="bing-coding-search-agent",  # Name of the agent
     instructions="""
     You are an AI assistant with 3 capabilities:
 
