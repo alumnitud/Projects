@@ -9,6 +9,8 @@ from azure.ai.projects.models import ConnectionType
 #for bing grounding tool
 from azure.ai.agents.models import BingGroundingTool
 
+# This has the same functionality as the SeachandCodingAgent, but the creationf of elemnts is not encapsulated in methods. Good for demo for Foundry.
+
 # One issue here is that during the creation of the agent, if it runs into an error it doesn't delete the agent.
 
 # This simple agent uses the Code Interpreter tool to answer coding questions. 
